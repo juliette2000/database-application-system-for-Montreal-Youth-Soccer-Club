@@ -1,0 +1,22 @@
+CREATE TABLE `Personnel` (
+  `personnel_id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `last_name` varchar(50) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `ssn` varchar(11) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `medicare_number` varchar(12) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `city` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `province` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(20) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `role` varchar(50) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `mandate` varchar(50) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`personnel_id`),
+  UNIQUE KEY `ssn` (`ssn`),
+  UNIQUE KEY `medicare_number` (`medicare_number`),
+  UNIQUE KEY `email` (`email`),
+  CONSTRAINT `Personnel_chk_1` CHECK ((`role` in (_utf8mb3'Administrator',_utf8mb3'Trainer',_utf8mb3'Other'))),
+  CONSTRAINT `Personnel_chk_2` CHECK ((`mandate` in (_utf8mb3'Volunteer',_utf8mb3'Salary')))
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;

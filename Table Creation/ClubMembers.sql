@@ -1,0 +1,22 @@
+CREATE TABLE `ClubMembers` (
+  `member_id` int NOT NULL AUTO_INCREMENT,
+  `membership_number` int DEFAULT NULL,
+  `first_name` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `last_name` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `social_security_number` varchar(20) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `medicare_card_number` varchar(20) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `telephone_number` varchar(15) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `city` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `province` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(10) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `family_member_id` int DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`member_id`),
+  UNIQUE KEY `social_security_number` (`social_security_number`),
+  UNIQUE KEY `membership_number` (`membership_number`),
+  UNIQUE KEY `medicare_card_number` (`medicare_card_number`),
+  KEY `family_member_id` (`family_member_id`),
+  CONSTRAINT `ClubMembers_ibfk_1` FOREIGN KEY (`family_member_id`) REFERENCES `FamilyMembers` (`family_member_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;

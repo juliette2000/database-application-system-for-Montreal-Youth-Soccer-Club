@@ -1,0 +1,23 @@
+CREATE TABLE `FamilyMembers` (
+  `family_member_id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(100) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `last_name` varchar(100) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `social_security_number` varchar(20) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `medicare_card_number` varchar(20) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `telephone_number` varchar(15) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `city` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `province` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(10) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `email_address` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `primary_family_member_id` int DEFAULT NULL,
+  `personnel_id` int DEFAULT NULL,
+  PRIMARY KEY (`family_member_id`),
+  UNIQUE KEY `social_security_number` (`social_security_number`),
+  UNIQUE KEY `medicare_card_number` (`medicare_card_number`),
+  KEY `primary_family_member_id` (`primary_family_member_id`),
+  KEY `fk_personnel` (`personnel_id`),
+  CONSTRAINT `FamilyMembers_ibfk_1` FOREIGN KEY (`primary_family_member_id`) REFERENCES `FamilyMembers` (`family_member_id`),
+  CONSTRAINT `fk_personnel` FOREIGN KEY (`personnel_id`) REFERENCES `Personnel` (`personnel_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
